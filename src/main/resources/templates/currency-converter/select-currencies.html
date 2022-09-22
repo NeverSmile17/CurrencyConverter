@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to currency converter</title>
+</head>
+<body>
+    <form method="POST" th:action="@{converted-currency}" th:object="${input_data}">
+        <h2 th:text="${'Курс валют рассчитан исходя из данных на ' + date}"></h2>
+
+        <br>
+
+        <label for="currencyFrom">Исходная валюта</label>
+        <select id="currencyFrom" th:name="currencyFrom">
+            <option th:each="currency: ${currencies}" th:value="${currency}" th:text="${currency}">
+            </option>
+        </select>
+
+        <br>
+
+        <label for="currencyTo">Результирующая валюта</label>
+        <select id="currencyTo" th:name="currencyTo">
+            <option th:each="currency: ${currencies}" th:value="${currency}" th:text="${currency}">
+            </option>
+        </select>
+
+        <br>
+
+        <label for="count">Исходная валюта</label>
+        <input th:name="count" type="text" id="count">
+
+        <br>
+
+        <input type="submit" value="Рассчитать"/>
+    </form>
+</body>
+</html>
